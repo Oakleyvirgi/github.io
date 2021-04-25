@@ -114,12 +114,10 @@ p a:visited {
  color: #6495ED;
 }
 
-
 p a:hover {
  text-decoration: underline;
  color: #6495ED;
 }
-
 
 @media screen and (min-width: 50em) {
 
@@ -147,15 +145,16 @@ p a:hover {
   width: 15vw;
  }
 
- header ul {
-  padding: 0 4.5px 4px 0;
- }
-
- header li {
+header li {
   font-size: .7em;
   padding: 0 0 10px 0;
  }
 
+ header ul {
+  padding: 0 4.5px 4px 0;
+ }
+
+ 
  article {
   margin: 6px 12px;
   padding: 40px 50px;
@@ -165,6 +164,10 @@ p a:hover {
   font-size: 30px;
  }
 
+p {
+  font-size: .8em;
+ }
+ 
  figure {
   margin-top: 30px;
  }
@@ -173,7 +176,5 @@ p a:hover {
   width: 40%;
  }
 
- p {
-  font-size: .8em;
- }
+ 
 }
