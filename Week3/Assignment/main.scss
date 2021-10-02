@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+/* Variables */
+//colors
+$blue: #6495ED;
+$white: #FAEBD7;
+$link: #DEB887;
+$pure-white: white;
+$black: black;
+$NA : none;
+//breakpoint
+$break-small: 20em;
+
+/* Mixins */
+@mixin center(
+  $bottom: $top,
+  $top: 0,
+  $left: auto,
+  $right: auto
+  ) {
+    margin: $top $right $bottom $left ;
+}
+
+@mixin breakpoint($break) {
+    @if $break==large {
+        @media (min-width: $break-small) {
+            @content;
+        }
+      }
+    @else if $break==small {
+        @media (max-width: $break-small) {
+            @content;
+        }
+    }
+}
+
+body {
+    background-color: $white;
+    font-family: Helvetica, Arial, sans-serif;
+    @include breakpoint(small) {
+        div {
+            display: block;
+        }
+    }
+    @include breakpoint(large) {
+        div {
+            display: grid;
+            grid-template-columns: 12rem 1fr;
+        }
+    }
+}
+
+h1,
+h2 {
+    font-family: Lora;
+}
+
+ul {
+    list-style: $NA;
+}
+
+/* Nestings */
+header {
+  background-color: $blue;
+  text-align: right;
+
+  h1 a {
+      color: $white;
+  }
+  @include breakpoint(small) {
+      display: block;
+      padding: 1rem 2rem;
+  }
+  @include breakpoint(large) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      height: 100%;
+      width: 8rem;
+      padding: 1.5rem;
+  }
+}
+
+main {
+  width: 80%;
+  @include center(2em, 2em);
+  @include breakpoint(large) {
+      grid-column: 2;
+      padding: 0.5rem;
+  }
+}
+
+nav {
+  a {
+      color: $white;
+      &:hover {
+          color: $pure-white;
+      }
+  }
+  li {
+      padding: 0.5rem;
+  }
+}
+
+a {
+    color: $blue;
+    text-decoration: $NA;
+    &:active {
+        color: $link;
+    }
+    &:hover {
+        text-decoration: underline;
+    }
+    &:visited {
+        color: $blue;
+        text-decoration: $NA;
+    }    
+}
+
+article {
+    background-color: $pure-white;
+    box-shadow: 4px 4px 2px #ccc;
+    @include center(2rem);
+    text-align: left;
+
+    h2 a {
+        color:$black;
+        &:hover {
+            color: $blue;
+        }
+        &:visited {
+            color:$black;
+        }  
+    }
+    .post-content {
+        @include center(0);
+    }
+    .post-date {
+        color: gray;
+        @include center(-1rem, 1rem);
+    }
+    figure {
+        @include center(0);
+        text-align: center;
+
+        @include breakpoint(large) {
+            @include center(0, 3em)
+        }
+    }
+    img {
+        width: 50%;
+        @include center(0);
+    }
+    @include breakpoint(small) {
+        padding: 1.5rem;
+    }
+    @include breakpoint(large) {
+        padding: 2.5rem;
+        margin: 2.5rem;
+    }
+}
